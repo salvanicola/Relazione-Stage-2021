@@ -21,7 +21,7 @@ Sempre a back-end sono disponibili tutti i DB basati su Microsoft SQL Server e l
 ASP.NET è un framework creato da Microsoft per lo sviluppo di web application. Segue il pattern MVC (Model View Controller), ripreso poi dall'infrastruttura front end di Sportello. La view è costruita attraverso le normali tecnologie web, mentre il model e il controller sono scritti in C\#. I model non sono nient'altro che \textit{contract} che vengono utilizzati nel comunicazioni Ajax tra le componenti. I controller espongono metodi utili al front end implementandone la logica di fondo.  
 
 \subsubsection{SOAP}
-Durante la prima fase del tirocinio mi è stato molto utile il concetto di chiamata SOAP. Simple Object Access Protocol è utilizzato per scambiare informazioni strutturate basato principalmente su HTTP. SOAP utilizza un sistema di incapsulamento delle informazioni e anche per questo è portato per il trasporto di oggetti.
+Durante la prima fase del tirocinio mi è stato molto utile il concetto di chiamata SOAP. Il \textit{Simple Object Access Protocol} è utilizzato per scambiare informazioni strutturate basato principalmente su HTTP. SOAP utilizza un sistema di incapsulamento delle informazioni e anche per questo è portato per il trasporto di oggetti.
 
 \subsection{Ambienti di Sportello}
 
@@ -35,24 +35,31 @@ L'ambiente di sviluppo é il primo in cui vengono rilasciate le modifiche a Spor
 
 \begin{figure}[h!]
     \centering
-	\includegraphics[width=\textwidth]{./res/img/svil-diag.png}
+	\includegraphics[width=0.85\textwidth]{./res/img/svil-diag.png}
     \caption{Overview dell'infrastruttura dell'ambiente SVIL}
 \end{figure}
 
 \subsubsection{UAT}
 
+L'ambiente UAT é predisposto per il testing da parte di un team predisposto dal cliente. Qui alcuni dipendenti predisposti di Intesa testano le modifiche più importanti o il rilascio di nuove funzionalità. Su UAT si trova una versione successiva rispetto a quella presente in produzione. Se il software passa i requisiti imposti dal cliente, può essere rilasciato in SYSTEM.
+
+\begin{comment}
 \begin{figure}[h!]
     \centering
 	\includegraphics[width=0.75\textwidth]{./res/img/Collegamenti_UAT.png}
     \caption{Overview dell'infrastruttura dell'ambiente UAT}
 \end{figure}
+\end{comment}
 
 \subsubsection{SYSTEM}
 
+SYSTEM é l'ambiente di produzione. Qui esiste solo codice verificato e testato. Inoltre il sistema é costantemente monitorato sia dal cliente che da Lynx stessa.  \\
+Si può notare dallo schema che i server stessi sono localizzati in punti geografici diversi, ma hanno lo stesso punto di accesso e gli stessi collegamenti alle altre componenti.  
+
 \begin{figure}[h!]
     \centering
-	\includegraphics[width=0.75\textwidth]{./res/img/SchemiAmbienti_SYSTEM-UAT_v1.1.png}
-    \caption{Overview dell'infrastruttura dell'ambiente SYSTEM}
+	\includegraphics[width=0.85\textwidth]{./res/img/SchemiAmbienti_SYSTEM-UAT_v1.1.png}
+    \caption{Overview dell'infrastruttura dell'ambiente SYSTEM e UAT}
 \end{figure}
 
 \subsection{Strumenti utilizzati}
@@ -65,7 +72,12 @@ L'ambiente di sviluppo é il primo in cui vengono rilasciate le modifiche a Spor
     \end{center}
 \end{wrapfigure}
 
-L'IDE principale utilizzato durante lo sviluppo é stato naturalmente Visual Studio. Integrato nativamente con il framework ASP.NET e il linguaggio C\#, non é stato di difficile utilizzo. \\ É disponibile un interfaccia per la gestione dei pacchetti e delle librerie esterne tramite \textbf{NuGet}. É stato interessante gestire e integrare le varie \textbf{.dll} (estensione delle librerie Windows). \\ É ovviamente presente uno strumento per la build automatica e uno per il testing.
+L'IDE principale utilizzato durante lo sviluppo é stato naturalmente Visual Studio. Integrato nativamente con il framework ASP.NET e il linguaggio C\#, non é stato di difficile utilizzo. \\ É disponibile un interfaccia per la gestione dei pacchetti e delle librerie esterne tramite \textbf{NuGet}. É stato interessante gestire e integrare le varie \textbf{.dll} (estensione delle librerie Windows). \\ É ovviamente presente uno strumento per la build automatica e uno per il testing. \\
+Vengono utilizzate altre versioni di Visual Studio (Microsoft SQL Server Management o VS 2017) per la gestione e l'interrogazione dei database.
 
 \subsection{Rational Team Concert (RTC)}
 \textbf{RTC} é il \textit{version control system} sviluppato da IBM. Essendo abituato ad altri tipi di sistemi basati su \textbf{Git} é stato per me uno scoglio abituarmi, dato che l'applicazione, come anche i miei colleghi, utilizzano terminologia diversa. Dove su Git si utilizzano i \textit{branch} su RTC si utilizzano gli \textit{stream}, ad esempio. Oltre ad essere diverso a livello di terminologia, lo é anche a livello di complessità e di funzionalità offerte. É possibile, ad esempio, scaricare parte della \textit{repository}, lavorare solo su parte di essa o sincronizzarla parzialmente. Ha una buona gestione dei team e si può integrare con le build dell'intera applicazione in modo tale da automatizzarla. Inoltre, riesce a gestire i tre ambienti di Sportello, caricandosi del deploy di gran parte delle sue componenti. 
+
+\subsection{Browser}
+Lato client Nuovo Sportello é una web application ed é quindi accessibile tramite browser. É nativamente supportata da Internet Explorer, ma é da tempo in corso un porting di alcune funzionalità anche su \textit{Google Chrome} e \textit{Mozilla Firefox}. \\
+Il test su browser, soprattutto tramite debugger integrato si é rivelato molto utile durante la prima fase di interazione con il cliente. 
