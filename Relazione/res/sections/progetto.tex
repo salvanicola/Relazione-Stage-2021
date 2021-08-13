@@ -30,6 +30,9 @@ Oltre ai metodi qui sopra ho avuto modo di implementare anche il sistema di invi
 In questo caso non ho avuto modo di esplorare in dettaglio quale libreria utilizzi l'infrastruttura per l'invio delle email da codice. A grandi linee esiste un server di posta gestito da Microsoft di Intesa SanPaolo, che viene contattato da Sportello per le invio delle email. \\
 Anche in questo caso ho avuto modo di interrogare i database per ricevere le anagrafiche dei direttori, comprese gli indirizzi email. 
 
+\subsubsection{Unit test}
+Prima del rilascio in ambiente \textit{UAT} e successivamente in ambiente \textit{SVIL}, é stata necessaria l'implementazione degli unit test. Lynx ha concordato con il cliente di raggiungere il 90\% di \textit{code coverage} per Sportello, per questo ogni nuova componente rilasciata necessita di unit test, che vadano a coprire quasi per intero il codice.
+
 \subsection{Nuovo driver stampanti}
 L'altra commessa di cui ho fatto parte riguardava il servizio di stampa collegato a Sportello. L'applicativo si connette ai dispositivi passando attraverso dei driver appositi, pensati appositamente. Il driver viene sviluppato da un'azienda esterna, \textit{SIT}, con la quale Lynx collabora per la produzioni delle stampe. \\
 Con il mio team sono stato chiamato ad eseguire un analisi approfondita dell'impatto dei cambiamenti del driver e delle stampanti bancarie su Sportello. Il driver utilizza infatti dei template, in formato \textit{.doc}, che vengono popolati a codice e successivamente stampati. L'analisi prevedeva l'individuazione di modifiche standard da fare ai template per ottenere stampe uguali o simili a quelle che venivano prodotte in precedenza. \\
