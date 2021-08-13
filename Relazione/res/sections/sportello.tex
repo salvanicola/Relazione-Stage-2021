@@ -15,13 +15,7 @@ pdfDurante le ore di formazione, il tutor \NST mi ha presentato l'architettura d
 
 Com'è possibile vedere dalla figura la parte front-end dell'infrastruttura a sinistra è basata su ASP.NET. Il client scritto in Typescript e HTML comunica tramite chiamate Ajax con un server chiamato Presentation Layer scritto in C\#, il quale contiene tutta la logica complessa e ha la possibilità di eseguire chiamate ai server di Intesa SanPaolo o a collegarsi a servizi Middleware. Questa parte è responsabile anche del collegamento a device fisici controllabili via software. \\
 Nel back-end ho già nominato i server Middleware che si occupano di esporre servizi basati su protocolli di tipo SOAP. In questo frangente sono venuto a contatto con una tecnologia Microsoft: \textit{WCF}. Windows Communication Foundation (WCF) è un framework per costruire servizi in modo sicuro ed è efficiente. È utilizzata anche una versione Event Driven con una programmazione grafica, attraverso file .xaml, chiamata Windows Workflow Foundation. \\
-Sempre a back-end sono disponibili tutti i DB basati su Microsoft SQL Server e l'host di Intesa SanPaolo, server contente tutti i dati della banca. \\
-
-\subsubsection{ASP.NET}
-ASP.NET è un framework creato da Microsoft per lo sviluppo di web application. Segue il pattern MVC (Model View Controller), ripreso poi dall'infrastruttura front end di Sportello. La view è costruita attraverso le normali tecnologie web, mentre il model e il controller sono scritti in C\#. I model non sono nient'altro che \textit{contract} che vengono utilizzati nel comunicazioni Ajax tra le componenti. I controller espongono metodi utili al front end implementandone la logica di fondo.  
-
-\subsubsection{SOAP}
-Durante la prima fase del tirocinio mi è stato molto utile il concetto di chiamata SOAP. Il \textit{Simple Object Access Protocol} è utilizzato per scambiare informazioni strutturate basato principalmente su HTTP. SOAP utilizza un sistema di incapsulamento delle informazioni e anche per questo è portato per il trasporto di oggetti.
+Sempre a back-end sono disponibili tutti i DB basati su Microsoft SQL Server e l'host di Intesa SanPaolo, server contente tutti i dati della banca. 
 
 \subsection{Ambienti di Sportello}
 
@@ -54,13 +48,26 @@ L'ambiente UAT é predisposto per il testing da parte di un team predisposto dal
 \subsubsection{SYSTEM}
 
 SYSTEM é l'ambiente di produzione. Qui esiste solo codice verificato e testato. Inoltre il sistema é costantemente monitorato sia dal cliente che da Lynx stessa.  \\
-Si può notare dallo schema che i server stessi sono localizzati in punti geografici diversi, ma hanno lo stesso punto di accesso e gli stessi collegamenti alle altre componenti.  
+Si può notare dallo schema che i server stessi sono localizzati in punti geografici diversi, ma hanno lo stesso punto di accesso e gli stessi collegamenti alle altre componenti. \\
+Solitamente le modifiche approvate in \textit{UAT} o che riguardano grosse componenti, escono in alcune filiali di prova filtrate tramite cosiddette \textit{chiavi di rollout}.  
 
 \begin{figure}[!ht]
     \centering
 	\includegraphics[width=0.85\textwidth]{./res/img/SchemiAmbienti_SYSTEM-UAT_v1.1.png}
     \caption{Overview dell'infrastruttura dell'ambiente SYSTEM e UAT}
 \end{figure}
+
+\subsection{Tecnologie utilizzate}
+
+\subsubsection{ASP.NET}
+ASP.NET è un framework creato da Microsoft per lo sviluppo di web application. Segue il pattern MVC (Model View Controller), ripreso poi dall'infrastruttura front end di Sportello. La view è costruita attraverso le normali tecnologie web, mentre il model e il controller sono scritti in C\#. I model non sono nient'altro che \textit{contract} che vengono utilizzati nel comunicazioni Ajax tra le componenti. I controller espongono metodi utili al front end implementandone la logica di fondo.  
+
+\subsubsection{KnockoutJS}
+
+\subsubsection{Ajax}
+
+\subsubsection{SOAP}
+Durante la prima fase del tirocinio mi è stato molto utile il concetto di chiamata SOAP. Il \textit{Simple Object Access Protocol} è utilizzato per scambiare informazioni strutturate basato principalmente su HTTP. SOAP utilizza un sistema di incapsulamento delle informazioni e anche per questo è portato per il trasporto di oggetti.
 
 \subsection{Strumenti utilizzati}
 
