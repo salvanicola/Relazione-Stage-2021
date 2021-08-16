@@ -7,17 +7,19 @@ Durante il tirocinio ho avuto modo di seguire due commesse con due team differen
 PACDI é una nuova funzionalità richiesta dal cliente Intesa SanPaolo. Per svilupparla ho fatto parte di un team di evolutiva. 
 
 \subsubsection{Funzionalità e dettagli}
-Dal punto di vista del cliente sportello é formato da un insieme di funzionalità, con sigle univoche di cinque lettere. D'ora in poi in questo documento, le sigle di cinque lettere scritte in maiuscolo (come PACDI) indicano le funzioni messe a disposizione da Sportello. 
-Sportello attualmente possiede \textbf{x} funzioni a disposizione. \\
- 
+
+Dal punto di vista del cliente Sportello é formato da un insieme di funzionalità, con sigle univoche di cinque lettere.\\
+D'ora in poi in questo documento, le sigle di cinque lettere scritte in maiuscolo (come PACDI) indicano le funzioni messe a disposizione da Sportello. Sportello attualmente possiede all'incirca 200 funzioni a disposizione. \\
 PACDI è una nuova funzionalità che sta per "passaggio di consegne tra direttori". In pratica permette di digitalizzare il cambio di direttore all'interno di una filiale. Tramite PACDI, un'ente centrale alla banca può aprire il passaggio di consegne tra i direttori. Questo significa che il direttore uscente alla filiale dovrà seguire una serie di procedure, quali lasciare una lista di attività aperte con relativo materiale associato. Il direttore entrante dovrà invece prendere visione della lista e approvarla o discuterne con il collega. Il tutto è accompagnato da un sistema di notifica tramite mail e naturalmente dall'interfaccia di Sportello. \\
 
 \subsubsection{Metodi implementati}
+
 Per inserirmi al meglio all'interno del processo di sviluppo di Sportello, ho avuto l'incarico di implementare alcuni metodi all'interno della funzione e curarli dall'input sul client fino all'esecuzione vera e propria lato .NET. \\ 
+I metodi riguardano la generazione di documenti Excel e PDF da codice e l'invio delle email di notifica ai direttori.
 
 \subsubsection{Generazione di Excel e PDF tramite iTextSharp}
 Ho dunque implementato alcuni metodi che permettevano al client di scaricare un documento excel della lista delle attività, uno per i dettagli di una singola attività e i rispettivi PDF. \\
-Per fare ciò ho naturalmente utilizzato una libreria apposita, \textit{iTextSharp}, approvata da Lynx e dalla banca. In questo frangente ho potuto saggiare la rigidità adottato dall'azienda e dal cliente nello scegliere le librerie esterne, stando attenti alla loro sicurezza e scalabilità. Spesso di alcune API, Sportello utilizza delle versioni gestite direttamente da Intesa SanPaolo e Lynx. Il caso di iTextSharp è stato limitato ma esemplare. \\
+Per fare ciò ho naturalmente utilizzato una libreria apposita, \textit{iTextSharp}, approvata da Lynx e dalla banca. In questo frangente ho potuto saggiare la rigidità adottato dall'azienda e dal cliente nello scegliere le librerie esterne, stando attenti alla loro sicurezza e scalabilità. Spesso di alcune API, Sportello utilizza delle versioni gestite direttamente da Intesa SanPaolo e Lynx. Il caso di iTextSharp è sicuramente limitato, ma esemplare. \\
 Come già detto ho avuto modo di implementare l'intero percorso a codice della funzione, dall'HTML, passando per la funzione in TypeScript e finendo nel framework .NET del Presentation Layer. \\
 Ho iniziato implementando la funzione in C\# utilizzando la libreria di cui sopra. Mi è stato consigliato un approcio \textit{test driven}, sono partito dunque a scrivere la funzione di test associata. Mi è stato utilissimo dato che non avevo un ambiente dove testare in modo dinamico se effettivamente l'implementazione fosse corretta, fino al rilascio in ambiente SVIL. \\
 Durante questa esperienza ho avuto modo di approciarmi anche alle chiamate esterne ai database. Avevo bisogno infatti di alcune chiavi di configurazioni caricate in esse, come ad esempio percorsi per i file da salvare o utilizzare come template nella generazione dei template. Grazie a questo ho avuto modo di saggiare l'infrastruttura di Sportello costruita da Lynx, tramite Proxy e chiamate semplificate per raggiungere server esterni. \\
@@ -27,11 +29,11 @@ Una volta implementato questo è stato facile collegare all'interfaccia la mia f
 
 \subsubsection{Invio delle email}
 Oltre ai metodi qui sopra ho avuto modo di implementare anche il sistema di invio di email di notifica ai direttori, che informano dello stato della procedura. \\
-In questo caso non ho avuto modo di esplorare in dettaglio quale libreria utilizzi l'infrastruttura per l'invio delle email da codice. A grandi linee esiste un server di posta gestito da Microsoft di Intesa SanPaolo, che viene contattato da Sportello per le invio delle email. \\
+In questo caso non ho avuto modo di esplorare in dettaglio quale libreria utilizza l'infrastruttura per l'invio delle email da codice. A grandi linee esiste un server di posta gestito da Microsoft di Intesa SanPaolo, che viene contattato da Sportello per le invio delle email. \\
 Anche in questo caso ho avuto modo di interrogare i database per ricevere le anagrafiche dei direttori, comprese gli indirizzi email. 
 
 \subsubsection{Unit test}
-Prima del rilascio in ambiente \textit{UAT} e successivamente in ambiente \textit{SVIL}, é stata necessaria l'implementazione degli unit test. Lynx ha concordato con il cliente di raggiungere il 90\% di \textit{code coverage} per Sportello, per questo ogni nuova componente rilasciata necessita di unit test, che vadano a coprire quasi per intero il codice.
+Prima del rilascio in ambiente \textit{UAT} e successivamente in ambiente \textit{SVIL}, é stata necessaria l'implementazione degli unit test. Lynx ha concordato con il cliente di raggiungere il 90\% di \textit{code coverage} per Sportello, per questo ogni nuova componente rilasciata necessita di unit test, che vadano a coprire quasi per intero il codice scritto.
 
 \subsection{Nuovo driver stampanti}
 L'altra commessa di cui ho fatto parte riguardava il servizio di stampa collegato a Sportello. L'applicativo si connette ai dispositivi passando attraverso dei driver appositi, pensati appositamente. Il driver viene sviluppato da un'azienda esterna, \textit{SIT}, con la quale Lynx collabora per la produzioni delle stampe. \\
